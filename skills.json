@@ -1,0 +1,76 @@
+{
+  "remote_skills": [
+    {
+      "name": "vercel-react-best-practices",
+      "repo": "vercel-labs/agent-skills",
+      "skill": "vercel-react-best-practices",
+      "url": "https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices"
+    },
+    {
+      "name": "web-design-guidelines",
+      "repo": "vercel-labs/agent-skills",
+      "skill": "web-design-guidelines",
+      "url": "https://skills.sh/vercel-labs/agent-skills/web-design-guidelines"
+    },
+    {
+      "name": "vercel-composition-patterns",
+      "repo": "vercel-labs/agent-skills",
+      "skill": "vercel-composition-patterns",
+      "url": "https://skills.sh/vercel-labs/agent-skills/vercel-composition-patterns"
+    },
+    {
+      "name": "agent-browser",
+      "repo": "vercel-labs/agent-browser",
+      "skill": "agent-browser",
+      "url": "https://skills.sh/vercel-labs/agent-browser/agent-browser"
+    },
+    {
+      "name": "seo-audit",
+      "repo": "coreyhaines31/marketingskills",
+      "skill": "seo-audit",
+      "url": "https://skills.sh/coreyhaines31/marketingskills/seo-audit"
+    },
+    {
+      "name": "brainstorming",
+      "repo": "obra/superpowers",
+      "skill": "brainstorming",
+      "url": "https://skills.sh/obra/superpowers/brainstorming"
+    },
+    {
+      "name": "systematic-debugging",
+      "repo": "obra/superpowers",
+      "skill": "systematic-debugging",
+      "url": "https://skills.sh/obra/superpowers/systematic-debugging"
+    },
+    {
+      "name": "marketing-ideas",
+      "repo": "coreyhaines31/marketingskills",
+      "skill": "marketing-ideas",
+      "url": "https://skills.sh/coreyhaines31/marketingskills/marketing-ideas"
+    },
+    {
+      "name": "test-driven-development",
+      "repo": "obra/superpowers",
+      "skill": "test-driven-development",
+      "url": "https://skills.sh/obra/superpowers/test-driven-development"
+    },
+    {
+      "name": "ai-sdk",
+      "repo": "vercel/ai",
+      "skill": "ai-sdk",
+      "url": "https://skills.sh/vercel/ai/ai-sdk"
+    },
+    {
+      "name": "swiftui-expert-skill",
+      "repo": "avdlee/swiftui-agent-skill",
+      "skill": "swiftui-expert-skill",
+      "url": "https://skills.sh/avdlee/swiftui-agent-skill/swiftui-expert-skill"
+    },
+    {
+      "name": "slidev",
+      "repo": "antfu/skills",
+      "skill": "slidev",
+      "url": "https://skills.sh/antfu/skills/slidev"
+    }
+  ]
+}

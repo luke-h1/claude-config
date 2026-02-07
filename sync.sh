@@ -106,6 +106,21 @@ validate_skill() {
     return 0
 }
 
+# Check if a skill is a remote skill (tracked in skills.json)
+is_remote_skill() {
+    local name="$1"
+    if [ -f "$CONFIG_DIR/skills.json" ]; then
+        python3 -c "
+import json, sys
+data = json.load(open('$CONFIG_DIR/skills.json'))
+names = [s['name'] for s in data.get('remote_skills', [])]
+sys.exit(0 if '$name' in names else 1)
+" 2>/dev/null
+        return $?
+    fi
+    return 1
+}
+
 # Show status for a directory-based item (skills)
 show_dir_status() {
     local type="$1"
@@ -120,7 +135,11 @@ show_dir_status() {
         if [ -L "$item_path" ]; then
             target=$(readlink "$item_path")
             if [[ "$target" == "$CONFIG_DIR"* ]]; then
-                echo -e "  ${GREEN}✓${RESET} $item_name (synced)"
+                if is_remote_skill "$item_name"; then
+                    echo -e "  ${GREEN}✓${RESET} $item_name (synced, remote)"
+                else
+                    echo -e "  ${GREEN}✓${RESET} $item_name (synced)"
+                fi
             else
                 echo -e "  ${BLUE}→${RESET} $item_name (symlink to elsewhere)"
             fi
@@ -217,6 +236,7 @@ show_status() {
     echo "  ./sync.sh remove <type> <name>  Remove an item from repo (keeps local)"
     echo "  ./sync.sh pull                  Pull latest and reinstall"
     echo "  ./sync.sh push                  Commit and push changes"
+    echo "  ./sync.sh update [skill]        Fetch latest remote skills from upstream"
     echo "  ./sync.sh undo                  Restore from last backup"
     echo "  ./sync.sh validate              Validate all skills"
     echo "  ./sync.sh backups               List available backups"
@@ -624,6 +644,12 @@ case "${1:-}" in
         ;;
     push)
         push_changes
+        ;;
+    update)
+        update_args=()
+        $DRY_RUN && update_args+=("--dry-run")
+        [ -n "${2:-}" ] && update_args+=("--skill" "$2")
+        "$CONFIG_DIR/update-skills.sh" "${update_args[@]}"
         ;;
     undo)
         undo_last
