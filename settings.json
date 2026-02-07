@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm tsc:*)",
+      "Bash(gh run view:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(git fetch:*)",
+      "Bash(git-cliff:*)",
+      "Bash(git add:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(bun run gql:codegen:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx jest:*)"
+    ],
+    "deny": []
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
+  "alwaysThinkingEnabled": true,
+  "enabledPlugins": {
+    "expo-app-design@expo-plugins": true,
+    "expo-deployment@expo-plugins": true,
+    "upgrading-expo@expo-plugins": true,
+    "react-native-best-practices@callstack-agent-skills": true,
+    "sentry@claude-plugins-official": true
+  }
+}
