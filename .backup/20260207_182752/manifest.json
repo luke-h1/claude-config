@@ -1,7 +1,0 @@
-{
-    "timestamp": "2026-02-07T18:28:06Z",
-    "operation": "install",
-    "items": ["settings.json","skills/find-skills"],
-    "user": "lukehowsam",
-    "hostname": "mac"
-}
