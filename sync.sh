@@ -167,6 +167,25 @@ show_status() {
     echo "========================="
     echo ""
 
+    echo -e "${BOLD}CLAUDE.md:${RESET}"
+    if [ -L "$HOME/.claude/CLAUDE.md" ]; then
+        target=$(readlink "$HOME/.claude/CLAUDE.md")
+        if [[ "$target" == "$CONFIG_DIR"* ]]; then
+            echo -e "  ${GREEN}✓${RESET} CLAUDE.md (synced)"
+        else
+            echo -e "  ${BLUE}→${RESET} CLAUDE.md (symlink to elsewhere)"
+        fi
+    elif [ -f "$HOME/.claude/CLAUDE.md" ]; then
+        if [ -f "$CONFIG_DIR/CLAUDE.md" ]; then
+            echo -e "  ${YELLOW}⚠${RESET} CLAUDE.md (exists in both - local copy)"
+        else
+            echo -e "  ${RESET}○${RESET} CLAUDE.md (local only)"
+        fi
+    else
+        echo "  (not installed)"
+    fi
+    echo ""
+
     echo -e "${BOLD}Skills:${RESET}"
     if [ -d "$HOME/.claude/skills" ] && [ -n "$(ls -A "$HOME/.claude/skills" 2>/dev/null)" ]; then
         show_dir_status "skills"

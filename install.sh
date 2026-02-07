@@ -176,6 +176,34 @@ main() {
         mkdir -p ~/.claude
     fi
 
+    # CLAUDE.md (global instructions)
+    if [ -f "$CONFIG_DIR/CLAUDE.md" ]; then
+        if $DRY_RUN; then
+            if has_conflict ~/.claude/CLAUDE.md; then
+                dry_run_msg "Would backup and replace ~/.claude/CLAUDE.md"
+            else
+                dry_run_msg "Would link CLAUDE.md"
+            fi
+        else
+            if has_conflict ~/.claude/CLAUDE.md; then
+                [ -z "$backup_path" ] && backup_path=$(create_backup)
+                if handle_conflict "$CONFIG_DIR/CLAUDE.md" ~/.claude/CLAUDE.md "$backup_path" "CLAUDE.md"; then
+                    backed_up_items+=("CLAUDE.md")
+                    rm -rf ~/.claude/CLAUDE.md
+                    ln -sf "$CONFIG_DIR/CLAUDE.md" ~/.claude/CLAUDE.md
+                    echo -e "${GREEN}✓${RESET} CLAUDE.md (replaced, backup saved)"
+                    has_changes=true
+                else
+                    echo -e "${YELLOW}○${RESET} CLAUDE.md (kept local)"
+                fi
+            else
+                ln -sf "$CONFIG_DIR/CLAUDE.md" ~/.claude/CLAUDE.md
+                echo -e "${GREEN}✓${RESET} CLAUDE.md"
+                has_changes=true
+            fi
+        fi
+    fi
+
     # Settings
     if [ -f "$CONFIG_DIR/settings.json" ]; then
         if $DRY_RUN; then
