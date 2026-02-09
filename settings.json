@@ -10,20 +10,35 @@
       "mcp__ide__getDiagnostics",
       "Bash(bun run gql:codegen:*)",
       "Bash(npx tsc:*)",
-      "Bash(npx jest:*)"
+      "Bash(npx jest:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfix\\(infrastructure\\): support all tag formats in git-cliff\n\nUpdate tag_pattern to recognize both v-prefixed \\(v0.0.38\\) and\nnon-prefixed \\(0.0.38\\) tags, as well as OTA tags \\(ota-*\\).\n\nThis fixes the release workflow failing due to git-cliff not\nfinding matching tags.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git checkout main -- src/services/api/Client.ts src/context/AuthContext.tsx src/services/api/interceptors/authErrorInterceptor.ts src/services/api/interceptors/loggerInterceptor.ts)",
+      "Bash(python3:*)",
+      "Bash(curl:*)",
+      "Bash(bunx prettier:*)",
+      "Bash(bun run:*)",
+      "Bash(git stash:*)",
+      "WebFetch(domain:7tv.io)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "plan"
   },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
-  "alwaysThinkingEnabled": true,
   "enabledPlugins": {
     "expo-app-design@expo-plugins": true,
     "expo-deployment@expo-plugins": true,
     "upgrading-expo@expo-plugins": true,
     "react-native-best-practices@callstack-agent-skills": true,
-    "sentry@claude-plugins-official": true
+    "sentry@claude-plugins-official": true,
+    "claude-mem@thedotmack": true
+  },
+  "alwaysThinkingEnabled": true,
+  "autoUpdatesChannel": "stable",
+  "env": {
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-sonnet-4-5-20250929"
   }
 }
